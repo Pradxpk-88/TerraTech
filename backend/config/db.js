@@ -19,8 +19,8 @@ const connectDB = async () => {
         await sequelize.authenticate();
         console.log('Database Connected Successfully.');
     } catch (error) {
-        console.error('Unable to connect to the database:', error);
-        process.exit(1);
+        console.error('Unable to connect to the database. Server will continue in degraded mode:', error.message);
+        // process.exit(1);
     }
 };
 
