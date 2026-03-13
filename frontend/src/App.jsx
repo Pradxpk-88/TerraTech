@@ -6,6 +6,8 @@ import './styles/index.css';
 import { AuthProvider } from './context/AuthContext';
 import AuthPage from './pages/AuthPage';
 import RentalsPage from './pages/RentalsPage';
+import StorePage from './pages/StorePage';
+import ServicesPage from './pages/ServicesPage';
 
 // Placeholder Pages - Will be moved to separate files later
 const Home = () => (
@@ -39,7 +41,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<AuthPage />} />
               <Route path="/rentals" element={<RentalsPage />} />
-              <Route path="/store" element={<div className="container"><h2>Farm Store Page</h2></div>} />
+              <Route path="/store" element={<StorePage />} />
+              <Route path="/services" element={<ServicesPage />} />
             </Routes>
           </main>
         </div>

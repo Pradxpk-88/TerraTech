@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const twilio = require('twilio');
 
 // Mock OTP storage (In production use Redis)
 const otpStore = {};
@@ -22,7 +23,27 @@ exports.sendOtp = async (req, res) => {
 
     console.log(`[DEV] OTP for ${phone_number}: ${otp}`);
 
-    // TODO: Integrate Twilio/SMS Provider here
+    // Integrate Twilio/SMS Provider here
+    try {
+        const accountSid = process.env.TWILIO_ACCOUNT_SID;
+        const authToken = process.env.TWILIO_AUTH_TOKEN;
+        const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
+
+        if (accountSid && accountSid !== 'ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' && authToken && twilioPhoneNumber) {
+            const client = twilio(accountSid, authToken);
+            await client.messages.create({
+                body: `Your TerraTech verification code is: ${otp}. Do not share it.`,
+                from: twilioPhoneNumber,
+                to: phone_number
+            });
+            console.log(`[DEV] SMS sent successfully to ${phone_number}`);
+        } else {
+            console.log(`[DEV] Twilio credentials not fully set, skipping SMS sending. Add them to .env to enable SMS.`);
+        }
+    } catch (smsError) {
+        console.error(`[DEV] Error sending SMS via Twilio:`, smsError.message);
+        // We still return 200 so development works even if SMS fails
+    }
 
     res.status(200).json({
         success: true,
