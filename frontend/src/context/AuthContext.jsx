@@ -9,17 +9,10 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        checkUserLoggedIn();
-    }, []);
-
-    const checkUserLoggedIn = async () => {
+    const checkUserLoggedIn = React.useCallback(async () => {
         const token = localStorage.getItem('token');
         if (token) {
             try {
-                // If we had a /me endpoint working, we'd call it here
-                // For now, we'll just assume validity or decoded token if we had jwt-decode
-                // But let's try to hit the backend 'me' endpoint
                 const { data } = await api.get('/auth/me');
                 setUser(data.data);
             } catch (error) {
@@ -29,7 +22,11 @@ export const AuthProvider = ({ children }) => {
             }
         }
         setLoading(false);
-    };
+    }, []);
+
+    useEffect(() => {
+        checkUserLoggedIn();
+    }, [checkUserLoggedIn]);
 
     const login = async (phone_number, otp) => {
         const { data } = await api.post('/auth/verify-otp', { phone_number, otp });

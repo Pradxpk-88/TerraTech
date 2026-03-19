@@ -1,15 +1,17 @@
 import React from 'react';
+import { useCart } from '../context/CartContext';
 
 const fertilizers = [
-  { id: 1, name: 'Urea 46% N', price: '$25.00', description: 'High-nitrogen fertilizer for optimal plant growth.', image: 'https://images.unsplash.com/photo-1627920769941-4cb503cc0904?auto=format&fit=crop&q=80&w=400', brand: 'AgriCorp' },
-  { id: 2, name: 'DAP (Diammonium Phosphate)', price: '$35.00', description: 'Provides excellent phosphorus and nitrogen for enhanced root development.', image: 'https://images.unsplash.com/photo-1599879708781-6fcc78d65c07?auto=format&fit=crop&q=80&w=400', brand: 'EcoFarms' },
-  { id: 3, name: 'Potassium Chloride (MOP)', price: '$30.00', description: 'Essential for improving root growth and drought resistance in crops.', image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=400', brand: 'NutriPlant' },
-  { id: 4, name: 'NPK 15-15-15', price: '$40.00', description: 'Balanced fertilizer for general purpose farming and soil health.', image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=400', brand: 'AgriCorp' },
-  { id: 5, name: 'Organic Compost Pile', price: '$15.00', description: '100% natural organic compost for sustainable and eco-friendly farming.', image: 'https://images.unsplash.com/photo-1588661730043-4dc9b32cb7c6?auto=format&fit=crop&q=80&w=400', brand: 'GreenEarth' },
-  { id: 6, name: 'Calcium Nitrate', price: '$28.00', description: 'Prevents blossom-end rot and improves overall fruit quality.', image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=400', brand: 'SoilBoost' }
+  { id: 1, name: 'Urea 46% N', price: '₹2000.00', description: 'High-nitrogen fertilizer for optimal plant growth.', image: 'https://images.unsplash.com/photo-1627920769941-4cb503cc0904?auto=format&fit=crop&q=80&w=400', brand: 'AgriCorp', type: 'Product' },
+  { id: 2, name: 'DAP (Diammonium Phosphate)', price: '₹2800.00', description: 'Provides excellent phosphorus and nitrogen for enhanced root development.', image: 'https://images.unsplash.com/photo-1599879708781-6fcc78d65c07?auto=format&fit=crop&q=80&w=400', brand: 'EcoFarms', type: 'Product' },
+  { id: 3, name: 'Potassium Chloride (MOP)', price: '₹2400.00', description: 'Essential for improving root growth and drought resistance in crops.', image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=400', brand: 'NutriPlant', type: 'Product' },
+  { id: 4, name: 'NPK 15-15-15', price: '₹3200.00', description: 'Balanced fertilizer for general purpose farming and soil health.', image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=400', brand: 'AgriCorp', type: 'Product' },
+  { id: 5, name: 'Organic Compost Pile', price: '₹1200.00', description: '100% natural organic compost for sustainable and eco-friendly farming.', image: 'https://images.unsplash.com/photo-1588661730043-4dc9b32cb7c6?auto=format&fit=crop&q=80&w=400', brand: 'GreenEarth', type: 'Product' },
+  { id: 6, name: 'Calcium Nitrate', price: '₹2200.00', description: 'Prevents blossom-end rot and improves overall fruit quality.', image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=400', brand: 'SoilBoost', type: 'Product' }
 ];
 
 const StorePage = () => {
+    const { addToCart } = useCart();
     return (
         <div className="container" style={{ padding: '2rem 1rem' }}>
             <h1 style={{ marginBottom: '1rem', color: 'var(--color-primary)' }}>Farm Store: Fertilizers</h1>
@@ -62,7 +64,13 @@ const StorePage = () => {
                                 {product.brand}
                             </span>
                             <p style={{ fontSize: '0.95rem', marginBottom: '1.5rem', flex: 1, color: 'var(--color-text)' }}>{product.description}</p>
-                            <button className="btn btn-primary" style={{ width: '100%', fontWeight: 'bold' }}>Add to Cart</button>
+                            <button 
+                                className="btn btn-primary" 
+                                style={{ width: '100%', fontWeight: 'bold' }}
+                                onClick={() => addToCart(product)}
+                            >
+                                Add to Cart
+                            </button>
                         </div>
                     </div>
                 ))}

@@ -57,6 +57,17 @@ const AuthPage = () => {
                     <p style={{ color: 'var(--color-text-secondary)' }}>
                         {step === 1 ? 'Enter your mobile number to continue' : 'Enter the code sent to your mobile'}
                     </p>
+                    <div style={{
+                        marginTop: '1rem',
+                        padding: '0.5rem',
+                        backgroundColor: 'var(--color-bg-tertiary, #f3f4f6)',
+                        borderRadius: 'var(--radius-sm)',
+                        fontSize: '0.8rem',
+                        color: 'var(--color-primary)',
+                        border: '1px dashed var(--color-primary)'
+                    }}>
+                        <strong>Demo Mode:</strong> Use 9626168999 and OTP 1234 if SMS is not enabled.
+                    </div>
                 </div>
 
                 {error && (

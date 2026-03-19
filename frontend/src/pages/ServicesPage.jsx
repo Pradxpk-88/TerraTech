@@ -39,8 +39,8 @@ const ServicesPage = () => {
                             </div>
                             <div>
                                 <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>Call Us</h4>
-                                <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: '1.05rem' }}>+1 (555) 123-4567</p>
-                                <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: '0.9rem', marginTop: '0.2rem' }}>Mon-Fri from 8am to 5pm</p>
+                                <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: '1.05rem' }}>9626168999</p>
+                                <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: '0.9rem', marginTop: '0.2rem' }}>Mon-Sat from 9am to 6pm</p>
                             </div>
                         </div>
 
@@ -57,8 +57,8 @@ const ServicesPage = () => {
                             </div>
                             <div>
                                 <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>Email Us</h4>
-                                <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: '1.05rem' }}>support@terratech.com</p>
-                                <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: '0.9rem', marginTop: '0.2rem' }}>We'll respond within 24 hours</p>
+                                <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: '1.05rem' }}>pradeep.pk8825@gmail.com</p>
+                                <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: '0.9rem', marginTop: '0.2rem' }}>Personal support for all farmers</p>
                             </div>
                         </div>
 
@@ -76,9 +76,9 @@ const ServicesPage = () => {
                             <div>
                                 <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>Headquarters</h4>
                                 <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: '1.05rem', lineHeight: '1.5' }}>
-                                    123 Agriculture Way<br/>
-                                    Farming Town, CA 90210<br/>
-                                    United States
+                                    31/77 Main Bazar<br/>
+                                    Kotagiri, Nilgiris<br/>
+                                    Tamil Nadu, India
                                 </p>
                             </div>
                         </div>

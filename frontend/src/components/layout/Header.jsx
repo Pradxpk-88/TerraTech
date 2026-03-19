@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, User, ShoppingBag, Sprout } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useCart } from '../../context/CartContext';
 
 const Header = () => {
     const { user, logout } = useAuth();
+    const { cartCount } = useCart();
 
     return (
         <header style={{
@@ -42,9 +44,28 @@ const Header = () => {
 
                 {/* Actions */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <button className="btn btn-outline" style={{ padding: '0.5rem' }}>
+                    <Link to="/cart" className="btn btn-outline" style={{ padding: '0.5rem', position: 'relative' }}>
                         <ShoppingBag size={20} />
-                    </button>
+                        {cartCount > 0 && (
+                            <span style={{
+                                position: 'absolute',
+                                top: '-5px',
+                                right: '-5px',
+                                backgroundColor: '#EF4444',
+                                color: 'white',
+                                borderRadius: '50%',
+                                width: '18px',
+                                height: '18px',
+                                fontSize: '0.7rem',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontWeight: 'bold'
+                            }}>
+                                {cartCount}
+                            </span>
+                        )}
+                    </Link>
 
                     {user ? (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>

@@ -9,11 +9,7 @@ const RentalsPage = () => {
     const [error, setError] = useState('');
     const [filters, setFilters] = useState({ category: '', location: '' });
 
-    useEffect(() => {
-        fetchEquipment();
-    }, [filters]);
-
-    const fetchEquipment = async () => {
+    const fetchEquipment = React.useCallback(async () => {
         try {
             setLoading(true);
             // Construct query params
@@ -32,7 +28,8 @@ const RentalsPage = () => {
                     category: 'Tractor',
                     rental_price_per_day: '1200',
                     operational_location: 'Coimbatore, TN',
-                    description: '40HP Tractor suitable for all general farming purpose. Comes with Rotavator attachment.'
+                    description: '40HP Tractor suitable for all general farming purpose. Comes with Rotavator attachment.',
+                    image_url: '/images/tractor.png'
                 },
                 {
                     id: 2,
@@ -40,7 +37,8 @@ const RentalsPage = () => {
                     category: 'Drone',
                     rental_price_per_day: '2500',
                     operational_location: 'Erode, TN',
-                    description: 'Precision spraying drone. 10L payload tank. Covers 15 acres per hour.'
+                    description: 'Precision spraying drone. 10L payload tank. Covers 15 acres per hour.',
+                    image_url: '/images/drone.png'
                 },
                 {
                     id: 3,
@@ -48,14 +46,19 @@ const RentalsPage = () => {
                     category: 'Harvester',
                     rental_price_per_day: '4000',
                     operational_location: 'Salem, TN',
-                    description: 'Combine harvester for paddy and corn. Operator included.'
+                    description: 'Combine harvester for paddy and corn. Operator included.',
+                    image_url: '/images/harvester.png'
                 }
             ]);
             setError('Could not connect to server. Showing demo data.');
         } finally {
             setLoading(false);
         }
-    };
+    }, [filters]);
+
+    useEffect(() => {
+        fetchEquipment();
+    }, [fetchEquipment]);
 
     return (
         <div className="container" style={{ padding: '2rem 1rem' }}>

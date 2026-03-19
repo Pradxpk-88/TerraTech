@@ -1,7 +1,9 @@
 import React from 'react';
-import { MapPin, Calendar, ArrowRight } from 'lucide-react';
+import { MapPin, Calendar, ArrowRight, ShoppingCart } from 'lucide-react';
+import { useCart } from '../../context/CartContext';
 
 const EquipmentCard = ({ item }) => {
+    const { addToCart } = useCart();
     return (
         <div className="card" style={{ display: 'flex', flexDirection: 'column', height: '100%', padding: '0', overflow: 'hidden' }}>
             {/* Image / Placeholder */}
@@ -13,8 +15,8 @@ const EquipmentCard = ({ item }) => {
                 justifyContent: 'center',
                 position: 'relative'
             }}>
-                {item.images && item.images.length > 0 ? (
-                    <img src={item.images[0]} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                {(item.images && item.images.length > 0) || item.image_url ? (
+                    <img src={item.image_url || item.images[0]} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 ) : (
                     <span style={{ color: '#94a3b8', fontWeight: 500 }}>No Image Available</span>
                 )}
@@ -57,8 +59,12 @@ const EquipmentCard = ({ item }) => {
                             ₹{item.rental_price_per_day}/day
                         </div>
                     </div>
-                    <button className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
-                        Rent <ArrowRight size={16} />
+                    <button 
+                        className="btn btn-primary" 
+                        style={{ padding: '0.5rem 1rem', fontSize: '0.875rem', gap: '0.5rem' }}
+                        onClick={() => addToCart({...item, price: `₹${item.rental_price_per_day}`, type: 'Rental'})}
+                    >
+                        Add to Cart <ShoppingCart size={16} />
                     </button>
                 </div>
             </div>
