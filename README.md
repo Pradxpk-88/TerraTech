@@ -152,7 +152,7 @@ npm run dev
 
 ## 👨‍💻 Team
 
-### Pradeep Kumar (Leon)
+### Pradeep Kumar
 - Project Lead
 - Full Stack Development
 - UI/UX Design
